@@ -26,7 +26,6 @@ lapply(lib, library, character.only=TRUE)
 
 setwd("C:/Users/do271/OneDrive - University of Exeter/PhD/Genomics/mafs")
 
-### had issue with beagle timing out at 99%, use zcat {file}.mafs.gz > chr_mafs.tsv
 ### read in global maf data per locus
 chr_high_conf <- read_tsv("chr_mafs.tsv")
 summary(chr_high_conf)
@@ -52,9 +51,7 @@ CAM <- read_tsv("CAM.mafs")
 CWA <- read_tsv("CWA.mafs")
 CWB <- read_tsv("CWB.mafs")
 CWC <- read_tsv("CWC.mafs")
-#CWD <- read_tsv("CWD.mafs")
 HAY1 <- read_tsv("HAY1.mafs")
-#HAY2 <- read_tsv("HAY2.mafs")
 NEV2 <- read_tsv("NEV2.mafs")
 OWE <- read_tsv("OWE.mafs")
 TYA <- read_tsv("TYA.mafs")
@@ -69,7 +66,7 @@ YHE <- read_tsv("YHE.mafs")
 #read in the good maf >0.05 snp loci 
 pos1 <-read_tsv("pos1.tsv")
 
-#create fields for position to match between dataframes - thanks for this TBaril!
+#create fields for position to match between dataframes
 pos1$ID = paste0(pos1$chr, "__", pos1$pos)
 
 AGA$ID = paste0(AGA$chromo, "__", AGA$position)
@@ -103,9 +100,7 @@ CAM_1 <- subset(CAM, select = -c(1,2,3,4))
 CWA_1 <- subset(CWA, select = -c(1,2,3,4))
 CWB_1 <- subset(CWB, select = -c(1,2,3,4))
 CWC_1 <- subset(CWC, select = -c(1,2))
-#CWD_1 <- subset(CWD, select = -c(1,2,3,4))
 HAY1_1 <- subset(HAY1, select =-c(1,2))
-#HAY2_1 <- subset(HAY2, select =-c(1,2,3,4))
 NEV2_1 <- subset(NEV2, select =-c(1,2,3,4))
 OWE_1 <- subset(OWE, select =-c(1,2,3,4))
 TYA_1 <- subset(TYA, select =-c(1,2,3,4))
@@ -126,9 +121,7 @@ new.table %<>% merge(CAM_1, by = "ID")
 new.table %<>% merge(CWA_1, by = "ID")
 new.table %<>% merge(CWB_1, by = "ID")
 new.table %<>% merge(CWC_1, by = "ID")
-#new.table %<>% merge(CWD_1, by = "ID")
 new.table %<>% merge(HAY1_1, by = "ID")
-#new.table %<>% merge(HAY2_1, by = "ID")
 new.table %<>% merge(NEV2_1, by = "ID")
 new.table %<>% merge(OWE_1, by = "ID")
 new.table %<>% merge(TYA_1, by = "ID")
@@ -169,7 +162,7 @@ AF<-read_tsv("AF_vector.tsv")
 ### change subset values based upon the included pops in the vector list ###
 
 
-### AF-vapeR Stuff ###
+### AF-vapeR Running ###
 
 ### vector lists ###
 
@@ -457,3 +450,4 @@ eig1_pos<-ggplot(to_plot,aes(x=pos,y=abs(eig1_score)))+
 
 eig1_pos# + xlim(0,12000000)
 ggsave("UK_eig1_pos_plot.png", dpi=300, width=10, height=6)
+
