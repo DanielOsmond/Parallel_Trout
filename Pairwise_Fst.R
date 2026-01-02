@@ -1,0 +1,13 @@
+library(dplyr)
+library(pheatmap)
+library(ggplot2)
+#library(maditr)
+library(reshape2)
+library(readr)
+library(tidyr)
+setwd("C:/Users/do271/OneDrive - University of Exeter/PhD/Genomics/sfs")
+
+fst<-read.table("pairwise_average_fst.txt", sep = "\t", header=T)
+wFst_matrix <- dcast(fst, pop1 ~ pop2, value.qvar = "wFst")
+write_tsv(wFst_matrix, "wFst_matrix.tsv")
+wFst_matrix <- replace(wFst_matrix, is.na(wFst_matrix), 0)
