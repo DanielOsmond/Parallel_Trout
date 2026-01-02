@@ -44,7 +44,7 @@ ggsave("linkage_pruned_DAPC_1v2.pdf", plot =DAPC_12, width =6, height =6)
 ggsave("linkage_pruned_DAPC_1v3.pdf", plot =DAPC_13, width =6, height =6)
 
 
-## let's try a different DAPC approach - I don't much like the angsd one for multivariate plotting ##
+
 
 
 
