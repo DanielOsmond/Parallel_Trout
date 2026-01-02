@@ -44,8 +44,6 @@ ggsave("ne_sweep_25.png", width =6, height =10)
 max(TYA$LR)
 
 
-
-### looped code from openai ### 
 # Initialize an empty list to store data frames
 data_frames <- list()
 
@@ -74,7 +72,7 @@ for (i in 1:40) {
 }
 
 #########################################################
-#### merged SW outputs ##################################
+#### merged Sweepfinder outputs #########################
 #########################################################
 
 library(readr)
@@ -334,10 +332,6 @@ YHE$CLR<-as.numeric(YHE$CLR)
 YHE$pos<-as.numeric(YHE$pos)
 YHE$ID<-paste(YHE$chr, ":", YHE$pos)
 outliers_YHE <- subsetDataFrameByPercentile(YHE, "CLR", 0.995)
-
-#merged_sw<-setDT(AGA)[ID %chin%AGB$ID]
-### this approach cuts about 2/3 of the sites, I guess because the positions don't match exactly ### 
-### I think best approach is to overlap each PBS stat with each SW outlier to prevent 
 
 library(GenomicRanges)
 
@@ -1064,4 +1058,5 @@ com_pbs_sweep<-plot_grid(AGA_sweep_manhat, AVB_sweep_manhat, CWB_sweep_manhat, H
           ncol=1)
 
 ggsave("com_pbs_sweep.png", com_pbs_sweep, width = 14, height =24)
+
 
