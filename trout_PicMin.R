@@ -1,4 +1,4 @@
-### PicMin script provided by Jim Whiting Feb 2023 ### 
+### Adapted from code provided by Jim Whiting, Feb 2023 ### 
 
 # An example PicMin analysis...
 library(poolr)
@@ -16,7 +16,7 @@ library(Rfast)
 # read in the Fst values per pop and calculate empPvals 
 # skip this for 100k window set where run on isca
 
-# anglesey 
+# Anglesey 
 r<-read.delim("50k_out/AGA_AGB_win50k_subset.fst.txt",sep="\t",head=F)
 names(r)[c(1:5)] <- c("comp","region","midPos","Nsites","uwFst")
 r$pval1 <- qvalue::empPvals(stat = r$uwFst,stat0 = r$uwFst)
@@ -126,7 +126,7 @@ Mid_Wales<-read_tsv("YHE_NEV2_50k_fst.pvals.txt")
 #trout_gff$chr<-as.numeric(trout_gff$seqid)
 #chr_gff<-data.frame(subset(trout_gff, chr>=0| chr<=40, type=-c("region")))
 
-## naughty here and manually entered header in notepad 
+## Manually anually entered header in text editor
 ## created the bed using gff2bed from BEDOPs on isca
 gff_bed<-read_tsv("trout_gff.bed")
 #names(gff_bed) =c("v1","v2","v3","v4","v5","v6","v7","cat","v9","v10")
@@ -622,3 +622,4 @@ setkey(setDT(tophits), name, start, end)
 setkey(setDT(pbs_outlier_genes), chromosome_name, start_position, end_position)
 gene_annotated_pbs<-foverlaps(pbs_outlier_genes,tophits)
 write_tsv(gene_annotated_pbs,"gene_annotated_pbs.tsv")
+
