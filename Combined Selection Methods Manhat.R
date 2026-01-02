@@ -1,5 +1,5 @@
 ##################################################
-#### Chapter 3 - selection scan figure ###########
+#### selection scan figure ###########
 ##################################################
 
 setwd("C:/Users/do271/OneDrive - University of Exeter/PhD/Genomics")
@@ -15,7 +15,7 @@ lapply(lib, library, character.only=TRUE)
 library(readr)
 library(qqman)
 
-### read in AF_vapeR stuff
+### read in AF_vapeR data 
 all_chr_res <- lapply(1:40,function(i) readRDS(paste0("mafs/NE","chr",i,"_AFV.rds")))
 
 # To fetch all of  chr AFV, we take the first element of each list element
@@ -91,11 +91,6 @@ merged_df <- merge(NE_AF_df, contigs, by.x = "chr", by.y = "name1", all.x = TRUE
 NE_AF_df$chr <- merged_df$name2
 
 write_tsv(NE_AF_df, "mafs/NE_eigenvals.tsv")
-
-
-
-
-
 
 
 ### all of the above is file prep, can run from here now the eigenvectors p-val df has been made ###
@@ -463,18 +458,8 @@ NE_pcangsd_manhat<-ggplot(don, aes(x=BPcum, y=-log10(pc3_pval))) +
 NE_pcangsd_manhat
 ggsave("pcangsd_manhat.png", NE_pcangsd_manhat,width=20,height=5,dpi=600)
 
-
-
-
-
-
-
-
-
-
-
-
 library(cowplot)
 com_plot<-plot_grid(picmin_manhat, NE_AF_manhat, NE_pcangsd_manhat,
           ncol=1)
 ggsave("combined_plot.png", com_plot, width=10, height = 8)
+
