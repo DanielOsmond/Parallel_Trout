@@ -12,17 +12,17 @@ AF<-read_tsv("AF_vector.tsv")
 
 vector_list_UK <- list(Anglesey = c("AGA","AGB"), # AGA = Anglesey metal, AGB = Anglesey clean
                        
-                       Irish = c("AVB","OWE"), # OWE = Irish no metal, sep catchment. (I picked this one because no metal is probably better than less metal)
+                       Irish = c("AVB","OWE"), # OWE = Irish no metal, separate catchment. 
                        
-                       Hayle = c("HAY1","CAM"), # HAY1 = Filthy Hayle (cornwall), CAM = Cornish clean. (Removed one of the duplicates, but either one is fine)
+                       Hayle = c("HAY1","CAM"), # HAY1 = Metal (cornwall), CAM = Cornish clean. 
                        
                        Mid_Wales = c("YHE", "NEV2"), # NEV = Mid_wales clean
                        
-                       N_Wales = c("CWA", "CWC"), # CWA = N-Wales metal, CWC = N-Wales lower metal (Pick whichever CWA one you think is best regional metal-clean pair)
+                       N_Wales = c("CWA", "CWC"), # CWA = N-Wales metal, CWC = N-Wales lower metal
                        
                        NE_England = c("TYD", "TYA"), # TYA = NE-England clean, TYD = NE-England metal
                        
-                       NE_England2 = c("WEA", "WEF")) #WEA = NE-England metal, WEF = NE clean. (Consider maybe removing this pair if it is very close to other NE ENgland one?)
+                       NE_England2 = c("WEA", "WEF")) #WEA = NE-England metal, WEF = NE clean. 
 
 vector_list_NE <- list(TY1 = c("TYD", "TYA"),
                        TY2 = c("TYE", "TYA"),
@@ -107,3 +107,4 @@ upsetplot
 dev.off()
 
 ?upsetplot
+
